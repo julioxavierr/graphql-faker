@@ -2,7 +2,7 @@ import {
   GraphQLList,
   GraphQLNonNull,
 } from 'graphql';
-import { internet, random } from 'faker';
+import { random, name } from 'faker';
 import isEmpty from 'validator/lib/isEmpty';
 
 import {
@@ -18,8 +18,8 @@ const userQueries = {
         setTimeout(() =>
           resolve(new Array(10).fill(undefined).map(() => ({
             id: random.uuid(),
-            name: random.name(),
-            description: random.description(),
+            name: name.findName(),
+            description: name.jobDescriptor(),
           }))), 100),
       );
       return users;

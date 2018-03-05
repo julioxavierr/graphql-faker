@@ -1,19 +1,18 @@
-# express-graphql-demo
-Basic express GraphQL setup with mock data for testing graphql queries and mutations
+# Express GraphQL
+Basic GraphQL server using Express and Node.js
 
-Run development enviroment using yarn
+## Use
 
 ```
 yarn install
-yarn run dev
+yarn run
 ```
 
-or with npm
+or 
 
 ```
 npm i
-npm run dev
+npm run
 ```
 
-after that the graphiql can be accessed at http://localhost:3000/graphql.
-
+after that the graphql can be accessed at http://localhost:8000/graphql.
