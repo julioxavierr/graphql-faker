@@ -3,7 +3,7 @@ import {
   GraphQLNonNull,
 } from 'graphql';
 import { internet, random } from 'faker';
-import isEmail from 'validator/lib/isEmail';
+import isEmpty from 'validator/lib/isEmpty';
 
 import {
   UserType,
@@ -18,7 +18,8 @@ const userQueries = {
         setTimeout(() =>
           resolve(new Array(10).fill(undefined).map(() => ({
             id: random.uuid(),
-            email: internet.email(),
+            name: random.name(),
+            description: random.description(),
           }))), 100),
       );
       return users;
@@ -35,9 +36,15 @@ const userMutations = {
       },
     },
     resolve: async (rootValue, { input }) => {
-      if (!isEmail(input.email)) {
-        throw new Error('Email is not in valid format');
+
+      if (!isEmpty(input.name)) {
+        throw new Error("Name field can't be empty");
       }
+
+      if (!isEmpty(input.description)) {
+        throw new Error("Description field can't be empty");
+      }
+
       const result = await new Promise((resolve) => {
         setTimeout(() =>
           resolve(Object.assign(input, {
