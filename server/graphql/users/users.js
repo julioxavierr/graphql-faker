@@ -2,7 +2,7 @@ import {
   GraphQLList,
   GraphQLNonNull,
 } from 'graphql';
-import { random, name } from 'faker';
+import { random, name, image } from 'faker';
 import isEmpty from 'validator/lib/isEmpty';
 
 import {
@@ -16,10 +16,11 @@ const userQueries = {
     resolve: async () => {
       const users = await new Promise(resolve =>
         setTimeout(() =>
-          resolve(new Array(10).fill(undefined).map(() => ({
+          resolve(new Array(20).fill(undefined).map(() => ({
             id: random.uuid(),
             name: name.findName(),
             description: name.jobDescriptor(),
+            imageUrl: image.avatar(),
           }))), 100),
       );
       return users;
@@ -43,6 +44,10 @@ const userMutations = {
 
       if (!isEmpty(input.description)) {
         throw new Error("Description field can't be empty");
+      }
+
+      if (!isEmpty(input.imageUrl)) {
+        throw new Error("ImageUrl field can't be empty");
       }
 
       const result = await new Promise((resolve) => {

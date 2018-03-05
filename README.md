@@ -1,5 +1,6 @@
-# Express GraphQL
-Basic GraphQL server using Express and Node.js
+# GraphQL Server
+
+Basic GraphQL server using Express and Node.js returning fake data.
 
 ## Use
 
@@ -15,4 +16,4 @@ npm i
 npm run
 ```
 
-after that the graphql can be accessed at http://localhost:8000/graphql.
+After that the server can be accessed at http://localhost:8000/graphql.

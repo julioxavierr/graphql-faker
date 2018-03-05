@@ -18,7 +18,10 @@ const UserType = new GraphQLObjectType({
     },
     description: {
       type: new GraphQLNonNull(GraphQLString),
-    }
+    },
+    imageUrl: {
+      type: new GraphQLNonNull(GraphQLString),
+    },
   }),
 });
 
@@ -30,6 +33,9 @@ const UserInputType = new GraphQLInputObjectType({
       type: new GraphQLNonNull(GraphQLString),
     },
     description: {
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    imageUrl: {
       type: new GraphQLNonNull(GraphQLString),
     },
   }),
