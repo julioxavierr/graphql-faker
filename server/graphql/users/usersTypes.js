@@ -13,9 +13,12 @@ const UserType = new GraphQLObjectType({
     id: {
       type: new GraphQLNonNull(GraphQLID),
     },
-    email: {
+    name: {
       type: new GraphQLNonNull(GraphQLString),
     },
+    description: {
+      type: new GraphQLNonNull(GraphQLString),
+    }
   }),
 });
 
@@ -23,7 +26,10 @@ const UserInputType = new GraphQLInputObjectType({
   name: 'UserInputType',
   description: 'User payload definition',
   fields: () => ({
-    email: {
+    name: {
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    description: {
       type: new GraphQLNonNull(GraphQLString),
     },
   }),
