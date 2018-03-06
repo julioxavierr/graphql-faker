@@ -6,8 +6,8 @@ import {
   GraphQLNonNull,
 } from 'graphql';
 
-const UserType = new GraphQLObjectType({
-  name: 'UserType',
+const User = new GraphQLObjectType({
+  name: 'User',
   description: 'User type definition',
   fields: () => ({
     id: {
@@ -42,6 +42,6 @@ const UserInputType = new GraphQLInputObjectType({
 });
 
 export {
-  UserType,
+  User,
   UserInputType,
 };
