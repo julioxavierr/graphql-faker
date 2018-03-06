@@ -1,22 +1,28 @@
 import {
   GraphQLList,
   GraphQLNonNull,
+  GraphQLInt,
 } from 'graphql';
 import { random, name, image } from 'faker';
 import isEmpty from 'validator/lib/isEmpty';
 
 import {
-  UserType,
+  User,
   UserInputType,
 } from './usersTypes';
 
 const userQueries = {
-  users: {
-    type: new GraphQLList(UserType),
-    resolve: async () => {
+  allUsers: {
+    type: new GraphQLList(User),
+    args: {
+      last: {
+        type: GraphQLInt,
+      },
+    },
+    resolve: async (rootValue, { last }) => {
       const users = await new Promise(resolve =>
         setTimeout(() =>
-          resolve(new Array(20).fill(undefined).map(() => ({
+          resolve(new Array(last).fill(undefined).map(() => ({
             id: random.uuid(),
             name: name.findName(),
             description: name.jobDescriptor(),
@@ -30,7 +36,7 @@ const userQueries = {
 
 const userMutations = {
   createUser: {
-    type: UserType,
+    type: User,
     args: {
       input: {
         type: new GraphQLNonNull(UserInputType),
